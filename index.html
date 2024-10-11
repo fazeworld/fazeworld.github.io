@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fragen-Website</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+    }
+    #question-container {
+      margin-top: 50px;
+    }
+    #next-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Willkommen!</h1>
+  <div id="question-container">
+    </div>
+  <button id="next-button" disabled>Nächste Frage</button>
+
+  <script>
+    const questions = [
+      "Was ist dein Lieblingshobby?",
+      "Welche Farbe magst du am liebsten?",
+      "Was ist dein Lieblingstier?",
+      "Was ist dein Lieblingsessen?",
+      "Was ist dein Lieblingsfilm?"
+    ];
+
+    let currentQuestion = 0;
+
+    function displayQuestion() {
+      const questionContainer = document.getElementById("question-container");
+      questionContainer.innerHTML = `<h2>${questions[currentQuestion]}</h2>`;
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        displayQuestion();
+        document.getElementById("next-button").disabled = false;
+      } else {
+        window.location.href = "example.com/interface"; // Hier musst du den richtigen Link einfügen
+      }
+    }
+
+    displayQuestion();
+
+    const nextButton = document.getElementById("next-button");
+    nextButton.addEventListener("click", nextQuestion);
+  </script>
+</body>
+</html>
